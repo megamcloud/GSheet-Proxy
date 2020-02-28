@@ -1,0 +1,26 @@
+server: ":8443"
+
+storage:
+  Adapter: mem
+  Folder: ./data
+
+dbsources:
+  - Name: anphabe_event
+    FetchingUrl: https://script.google.com/macros/s/AKfycbzKj507UijaPzOw-Pl_L675428cfc2F-nQpFFBiC70QYXaST2Q/exec?path=/checkin&order=code&offset=%offset%&limit=%size%
+    FetchingFormat: json
+    UpdateUrl: https://script.google.com/macros/s/AKfycbzKj507UijaPzOw-Pl_L675428cfc2F-nQpFFBiC70QYXaST2Q/exec?path=/checkin/%key%&method=POST
+    UpdateMethod: GET
+    IdField: code
+
+#  - Name: abc
+#      FetchingUrl: https://script.google.com/macros/s/AKfycbyKxlzZMiVlF01ZGPAXYsY0ARV-L8V04QCgONo5kIbTAwkfOC4C/exec?path=/sample&order=field_qrcode&offset=%offset%&limit=%size%
+#      FetchingFormat: json
+#      UpdateUrl: https://script.google.com/macros/s/AKfycbyKxlzZMiVlF01ZGPAXYsY0ARV-L8V04QCgONo5kIbTAwkfOC4C/exec?path=/sample/%key%&method=POST
+#      UpdateMethod: GET
+#      IdField: field_qrcode
+
+logging:
+  Filename: ./event-hub.log
+  MaxSize: 100
+  MaxBackups: 3
+  MaxAge: 28

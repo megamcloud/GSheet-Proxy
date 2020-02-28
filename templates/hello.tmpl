@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Checkin Validation</title>
+
+    <style type="text/css">
+        /*!
+         * Bootstrap Reboot v4.0.0 (https://getbootstrap.com)
+         * Copyright 2011-2018 The Bootstrap Authors
+         * Copyright 2011-2018 Twitter, Inc.
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+         * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
+         */
+        *, ::after, ::before {
+            box-sizing: border-box
+        }
+
+        html {
+            font-family: sans-serif;
+            line-height: 1.15;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -ms-overflow-style: scrollbar;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        @-ms-viewport {
+            width: device-width
+        }
+
+        article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+            display: block
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: left;
+            background-color: #fff
+        }
+
+        [tabindex="-1"]:focus {
+            outline: 0 !important
+        }
+
+        hr {
+            box-sizing: content-box;
+            height: 0;
+            overflow: visible
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 0;
+            margin-bottom: .5rem
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem
+        }
+
+        abbr[data-original-title], abbr[title] {
+            text-decoration: underline;
+            -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted;
+            cursor: help;
+            border-bottom: 0
+        }
+
+        address {
+            margin-bottom: 1rem;
+            font-style: normal;
+            line-height: inherit
+        }
+
+        dl, ol, ul {
+            margin-top: 0;
+            margin-bottom: 1rem
+        }
+
+        ol ol, ol ul, ul ol, ul ul {
+            margin-bottom: 0
+        }
+
+        dt {
+            font-weight: 700
+        }
+
+        dd {
+            margin-bottom: .5rem;
+            margin-left: 0
+        }
+
+        blockquote {
+            margin: 0 0 1rem
+        }
+
+        dfn {
+            font-style: italic
+        }
+
+        b, strong {
+            font-weight: bolder
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub, sup {
+            position: relative;
+            font-size: 75%;
+            line-height: 0;
+            vertical-align: baseline
+        }
+
+        sub {
+            bottom: -.25em
+        }
+
+        sup {
+            top: -.5em
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects
+        }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline
+        }
+
+        a:not([href]):not([tabindex]) {
+            color: inherit;
+            text-decoration: none
+        }
+
+        a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
+            color: inherit;
+            text-decoration: none
+        }
+
+        a:not([href]):not([tabindex]):focus {
+            outline: 0
+        }
+
+        code, kbd, pre, samp {
+            font-family: monospace, monospace;
+            font-size: 1em
+        }
+
+        pre {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            overflow: auto;
+            -ms-overflow-style: scrollbar
+        }
+
+        figure {
+            margin: 0 0 1rem
+        }
+
+        img {
+            vertical-align: middle;
+            border-style: none
+        }
+
+        svg:not(:root) {
+            overflow: hidden
+        }
+
+        table {
+            border-collapse: collapse
+        }
+
+        caption {
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+            color: #6c757d;
+            text-align: left;
+            caption-side: bottom
+        }
+
+        th {
+            text-align: inherit
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: .5rem
+        }
+
+        button {
+            border-radius: 0
+        }
+
+        button:focus {
+            outline: 1px dotted;
+            outline: 5px auto -webkit-focus-ring-color
+        }
+
+        button, input, optgroup, select, textarea {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit
+        }
+
+        button, input {
+            overflow: visible
+        }
+
+        button, select {
+            text-transform: none
+        }
+
+        [type=reset], [type=submit], button, html [type=button] {
+            -webkit-appearance: button
+        }
+
+        [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner, button::-moz-focus-inner {
+            padding: 0;
+            border-style: none
+        }
+
+        input[type=checkbox], input[type=radio] {
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        input[type=date], input[type=datetime-local], input[type=month], input[type=time] {
+            -webkit-appearance: listbox
+        }
+
+        textarea {
+            overflow: auto;
+            resize: vertical
+        }
+
+        fieldset {
+            min-width: 0;
+            padding: 0;
+            margin: 0;
+            border: 0
+        }
+
+        legend {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin-bottom: .5rem;
+            font-size: 1.5rem;
+            line-height: inherit;
+            color: inherit;
+            white-space: normal
+        }
+
+        progress {
+            vertical-align: baseline
+        }
+
+        [type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        [type=search] {
+            outline-offset: -2px;
+            -webkit-appearance: none
+        }
+
+        [type=search]::-webkit-search-cancel-button, [type=search]::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-file-upload-button {
+            font: inherit;
+            -webkit-appearance: button
+        }
+
+        output {
+            display: inline-block
+        }
+
+        summary {
+            display: list-item;
+            cursor: pointer
+        }
+
+        template {
+            display: none
+        }
+
+        [hidden] {
+            display: none !important
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, serif;
+            font-size: 15px;
+            color: #000;
+            text-align: center;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .header {
+            color: white;
+            background-color: green;
+            width: 100%;
+            padding: 30px 0;
+            font-size: 30px;
+        }
+
+        .footer {
+            color: white;
+            background-color: green;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 10px 0;
+            text-transform: uppercase;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+            display: table;
+
+        }
+
+        .content__inner {
+            margin-top: 30px;
+        }
+
+        .btn-next-scan {
+            display: block;
+            width: 100%:
+            padding: 10px 0;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .btn-next-scan:hover {
+            color: white;
+        }
+
+        .header__icon {
+            font-size: 50px;
+            line-height: 1.1em;
+        }
+
+        .success-standard .header {
+            background-color: green;
+        }
+
+        .success-vip .header {
+            background-color: violet
+        }
+
+        .success-standard .header__icon:before,
+        .success-vip .header__icon:before {
+            content: "✔";
+        }
+
+        .invalid .header {
+            background-color: red;
+        }
+
+        .invalid .header__icon:before {
+            content: "✘";
+        }
+
+        .header__status {
+            display: none;
+        }
+
+        .success-standard .header__status--standard {
+            display: block;
+        }
+
+        .success-vip .header__status--vip {
+            display: block;
+        }
+
+        .invalid .header__status--invalid {
+            display: block;
+        }
+
+        .invalid .content {
+            display: none;
+        }
+
+        .header__status--time {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .itemDetails {
+            display: flex;
+            justify-content: center;
+        }
+
+        .itemDetails span {
+            display: block;
+            width: 200px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .itemDetails span.key {
+            text-align:right;
+            font-weight:bold;
+            padding-right:20px;
+        }
+
+        .itemDetails span.value {
+            text-align:left
+        }
+
+        .code {
+            font-size: 30px;
+        }
+
+        .name {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<!--
+    Status class:
+    - success-standard: for Standard ticket
+    - success-vip: for VIP ticket
+    - invalid: for Invalid information. Content will be hidden.
+-->
+<body class="success-standard">
+<div class="header">
+    <span class="header__icon"></span>
+    <div class="header__status header__status--standard">Hello</div>
+    <div class="header__status header__status--vip">VIP Ticket</div>
+    <div class="header__status header__status--invalid">Invalid Ticket</div>
+    <div class="header__status header__status--time">{0}</div>
+
+</div>
+<!--iv class="footer" onClick="javascript:window.open('', '_self', '');window.close();">
+    Back to scan next ticket
+</div-->
+
+<div class="content">
+    <div class="content__inner">
+        <img src="{{ .publicUrl }}/qr.png" /> <br/>
+        Listening at: {{ .listen }} <br/>
+        scanAgent: <a href="{{ .scanAgentUrl }}" target="_blank">{{ .scanAgentUrl }}</a> <br/>
+        API Document: <a href="{{ .apiUrl }}" target="_blank">{{ .apiUrl }}</a> <br/>
+    </div>
+</div>
+</body>
+</html>
+
