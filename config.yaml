@@ -5,17 +5,17 @@ storage:
   Folder: ./data
 
 dbsources:
-  - Name: anphabe_event
-    FetchingUrl: https://script.google.com/macros/s/AKfycbzKj507UijaPzOw-Pl_L675428cfc2F-nQpFFBiC70QYXaST2Q/exec?path=/checkin&order=code&offset=%offset%&limit=%size%
+  - Name: unique_dbName
+    FetchingUrl: https://script.google.com/macros/s/AKfbzKj507UijaPzOw-Pl_L675428cfc2F-nQpFFBiC70QYXaST2Q/exec?path=/checkin&order=code&offset=%offset%&limit=%size%
     FetchingFormat: json
-    UpdateUrl: https://script.google.com/macros/s/AKfycbzKj507UijaPzOw-Pl_L675428cfc2F-nQpFFBiC70QYXaST2Q/exec?path=/checkin/%key%&method=POST
+    UpdateUrl: https://script.google.com/macros/s/AKfbzKj507UijaPzOw-Pl_L675428cfc2F-nQpFFBiC70QYXaST2Q/exec?path=/checkin/%key%&method=POST
     UpdateMethod: GET
     IdField: code
 
 #  - Name: abc
-#      FetchingUrl: https://script.google.com/macros/s/AKfycbyKxlzZMiVlF01ZGPAXYsY0ARV-L8V04QCgONo5kIbTAwkfOC4C/exec?path=/sample&order=field_qrcode&offset=%offset%&limit=%size%
+#      FetchingUrl: https://script.google.com/macros/s/AKfbyKxlzZMiVlF01ZGPAXYsY0ARV-L8V04QCgONo5kIbTAwkfOC4C/exec?path=/sample&order=field_qrcode&offset=%offset%&limit=%size%
 #      FetchingFormat: json
-#      UpdateUrl: https://script.google.com/macros/s/AKfycbyKxlzZMiVlF01ZGPAXYsY0ARV-L8V04QCgONo5kIbTAwkfOC4C/exec?path=/sample/%key%&method=POST
+#      UpdateUrl: https://script.google.com/macros/s/AKfbyKxlzZMiVlF01ZGPAXYsY0ARV-L8V04QCgONo5kIbTAwkfOC4C/exec?path=/sample/%key%&method=POST
 #      UpdateMethod: GET
 #      IdField: field_qrcode
 
